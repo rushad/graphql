@@ -2,14 +2,21 @@
   "name": "graphql",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
-  "scripts": {
-    "start": "./node_modules/.bin/json-graphql-server ./db.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "author": "",
   "license": "ISC",
-  "devDependencies": {
-    "json-graphql-server": "^1.0.2"
+  "main": "index.js",
+  "scripts": {
+    "server": "node server.js",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "dependencies": {
+    "express": "^4.16.2",
+    "json-graphql-server": "^1.0.2",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-scripts": "1.1.0"
   }
 }
