@@ -1,26 +1,47 @@
 import React from 'react';
 
+import { queryGraphQL } from '../../graphql';
+
+import './styles.css';
+
 class PickActor extends React.Component {
     state = {
-        actors: []
+        actors: [],
     };
 
-    componentWillMount() {
-        setTimeout(() => {
-            this.setState({ actors: [ 'qwe', 'asd', 'zxc' ] });
-        }, 3000);
+    async componentWillMount() {
+        const result = await queryGraphQL(`
+            query actorsShortView {
+                allActors(sortField: "lastName") {
+                    id
+                    firstName
+                    lastName
+                }
+            }
+        `);
+        this.setState({ actors: result.data.allActors });
     }
 
     render() {
         return (
-            <div>
-                PickActor:
-                { this.state.actors.map(actor => (
-                    <div>
-                        { actor }
-                    </div>
+            <select
+                className='pick-actor'
+                value={ this.props.selected || 'placeholder' }
+                onChange={ e => this.props.onChange(e.target.value) }
+            >
+                    <option
+                        key='placeholder'
+                        value='placeholder'
+                        disabled
+                    >
+                        Pick Actor
+                    </option>
+                    { this.state.actors.map(actor => (
+                    <option key={ actor.id } value={ actor.id }>
+                        { actor.firstName } { actor.lastName }
+                    </option>
                 ))}
-            </div>
+            </select>
         );
     }
 }

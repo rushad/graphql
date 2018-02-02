@@ -1,5 +1,5 @@
 const express = require('express');
-const jsonGraphqlExpress = require('json-graphql-server').jsonGraphqlExpress;
+const jsonGraphqlExpress = require('json-graphql-server').default;
 
 const db = require('./db.js');
 

@@ -3,5 +3,11 @@
 }
 
 .app__example {
-    margin: 10px;
+    width: 100%;
+}
+
+.app__example-title {
+    text-align: center;
+    font-size: 20px;
+    margin: 20px;
 }

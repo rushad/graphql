@@ -2,6 +2,7 @@ import React from 'react';
 
 import Menu from '../../components/Menu';
 import Example1 from '../Example1';
+import Example2 from '../Example2';
 
 import './styles.css';
 
@@ -12,7 +13,7 @@ const EXAMPLES = [
     },
     {
         title: 'Example #2',
-        page: Example1        
+        page: Example2        
     },
     {
         title: 'Example #3',
@@ -44,6 +45,9 @@ class App extends React.Component {
                     }
                 </Menu>
                 <div className='app__example'>
+                    <div className='app__example-title'>
+                        { EXAMPLES[this.state.selected].title }
+                    </div>
                     { React.createElement(EXAMPLES[this.state.selected].page) }
                 </div>
             </div>

@@ -2,12 +2,20 @@ import React from 'react';
 
 import PickActor from '../../components/PickActor';
 
+import './styles.css';
+
 class Example1 extends React.Component {
+    state = {
+        selectedActorId: null
+    };
+
     render() {
         return (
-            <div>
-                <div>Example 1</div>
-                <PickActor />
+            <div className='example1'>
+                <PickActor
+                    selected={ this.state.selectedActorId }
+                    onChange={ actorId => this.setState({ selectedActorId: actorId }) }
+                />
             </div>
         );
     }

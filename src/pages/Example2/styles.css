@@ -1,0 +1,11 @@
+.example2 {
+    text-align: center;
+    margin: 30px;
+}
+
+.example2__picture {
+    display: block;
+    border: none;
+    margin: 10px auto;
+    height: 500px;
+}
