@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Menu from '../../components/Menu';
+import SourceView from '../../components/SourceView';
 import Example1 from '../Example1';
 import Example2 from '../Example2';
 
@@ -9,11 +10,13 @@ import './styles.css';
 const EXAMPLES = [
     {
         title: 'Example #1',
-        page: Example1
+        page: Example1,
+        source: './src/components/PickActor/index.jsx'
     },
     {
         title: 'Example #2',
-        page: Example2        
+        page: Example2  ,
+        source: './src/pages/Example2/index.jsx'      
     },
     {
         title: 'Example #3',
@@ -27,7 +30,8 @@ const EXAMPLES = [
 
 class App extends React.Component {
     state = {
-        selected: 0
+        selected: 0,
+        source: null
     };
 
     render() {
@@ -50,6 +54,10 @@ class App extends React.Component {
                     </div>
                     { React.createElement(EXAMPLES[this.state.selected].page) }
                 </div>
+                <SourceView
+                    className='app__source'
+                    file={ EXAMPLES[this.state.selected].source }
+                />
             </div>
         );
     }
