@@ -16,14 +16,19 @@ class SourceView extends React.Component {
         source: ''
     };
 
-    async componentWillMount() {
-        const source = await getSource(this.props.file);
+    async loadSource(file) {
+        const source = await getSource(file);
         this.setState({ source });        
     }
 
-    async componentDidUpdate() {
-        const source = await getSource(this.props.file);
-        this.setState({ source });
+    componentWillMount() {
+        this.loadSource(this.props.file);
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (this.props.file !== nextProps.file) {
+            this.loadSource(nextProps.file);
+        }
     }
 
     render() {

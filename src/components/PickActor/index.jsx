@@ -11,7 +11,7 @@ class PickActor extends React.Component {
 
     async componentWillMount() {
         const result = await queryGraphQL(`
-            query actorsShortView {
+            query {
                 allActors(sortField: "lastName") {
                     id
                     firstName

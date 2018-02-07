@@ -1,13 +1,48 @@
 .app {
+    --stats-height: 250px;
+    --example-title-height: 70px;
     display: flex;
 }
 
 .app__example {
-    width: 100%;
+    flex-grow: 1;
+    border-left: 1px solid gray;
+    border-right: 1px solid gray;
+    background: #efe;
 }
 
 .app__example-title {
     text-align: center;
     font-size: 20px;
-    margin: 20px;
+    line-height: var(--example-title-height);
+}
+
+.app__info {
+    width: 600px;
+    background: #f8f8ff;
+}
+
+.app__stats {
+    height: var(--stats-height);
+    background: #eff;
+    padding: 10px;
+    white-space: pre;
+    font-family: monospace;
+    font-style: italic;
+    overflow: auto;
+    border-bottom: 1px solid gray;
+}
+
+.app__stats-element {
+    padding: 10px 0;
+}
+
+.app__filename {
+    font-style: italic;
+    padding: 3px;
+}
+
+.app__source {
+    height: calc(100vh - var(--stats-height));
+    overflow: auto;
 }

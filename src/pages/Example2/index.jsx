@@ -15,7 +15,7 @@ class Example2 extends React.Component {
     async selectActor(actorId) {
         this.setState({ selectedActorId: actorId });
         const result = await queryGraphQL(`
-            query actorPicture($id: ID!) {
+            query($id: ID!) {
                 Actor(id: $id) {
                     picture
                 }
