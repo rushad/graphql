@@ -1,3 +1,4 @@
+/* eslint-disable */
 module.exports = {
     actors: [
         { id: 101, firstName: 'James', lastName: 'Stewart', gender: 'M', picture: 'https://images-na.ssl-images-amazon.com/images/M/MV5BMjIwNzMzODY0NV5BMl5BanBnXkFtZTcwMDk3NDQyOA@@._V1_SY1000_CR0,0,799,1000_AL_.jpg' },
