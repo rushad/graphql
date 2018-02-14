@@ -1,5 +1,5 @@
 {
-  "name": "graphql",
+  "name": "graphql-workshop",
   "version": "1.0.0",
   "description": "",
   "author": "",
@@ -7,7 +7,7 @@
   "main": "index.js",
   "proxy": "http://localhost:3001",
   "scripts": {
-    "server": "node server.js",
+    "server": "nodemon server --exec babel-node",
     "start": "npm run server & react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
@@ -16,10 +16,17 @@
   "dependencies": {
     "classnames": "^2.2.5",
     "express": "^4.16.2",
+    "express-graphql": "^0.6.11",
+    "graphql": "^0.13.0",
     "json-graphql-server": "^2.1.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-scripts": "1.1.0",
     "react-syntax-highlighter": "^7.0.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "nodemon": "^1.14.12"
   }
 }
