@@ -1,36 +1,43 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import cn from 'classnames';
 
 import './styles.css';
 
-class MenuItem extends React.Component {
-    render() {
-        return (
-            <div
-                className={ cn('menu__item', { 'menu__item--selected': this.props.selected }) }
-                onClick={ () => this.props.onClick() }
-            >
-                { this.props.content }
-            </div>
-        );
-    }
-}
+const MenuItem = props => (
+    <div
+        role='button'
+        tabIndex='-1'
+        className={ cn('menu__item', { 'menu__item--selected': props.selected }) }
+        onClick={ () => props.onClick() }
+        onKeyDown={ () => {} }
+    >
+        { props.content }
+    </div>
+);
 
-class Menu extends React.Component {
-    render() {
-        return (
-            <div className='menu'>
-                { this.props.children.map((item, index) => (
-                    <MenuItem
-                        key={ index }
-                        content={ item }
-                        selected={ this.props.selected === index }
-                        onClick={ () => this.props.onSelect(index) }
-                    />
-                ))}
-            </div>
-        );
-    }
-}
+MenuItem.propTypes = {
+    content: PropTypes.node.isRequired,
+    selected: PropTypes.bool.isRequired,
+    onClick: PropTypes.func.isRequired
+};
+
+const Menu = props => (
+    <div className='menu'>
+        { props.items.map((item, index) => (
+            <MenuItem
+                key={ item }
+                content={ item }
+                selected={ props.selected === index }
+                onClick={ () => props.onSelect(index) }
+            />
+        ))}
+    </div>
+);
+
+Menu.propTypes = {
+    selected: PropTypes.number.isRequired,
+    items: PropTypes.arrayOf(PropTypes.string).isRequired
+};
 
 export default Menu;

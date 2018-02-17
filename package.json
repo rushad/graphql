@@ -7,19 +7,21 @@
   "main": "index.js",
   "proxy": "http://localhost:3001",
   "scripts": {
-    "start": "npm run lint && npm run server & react-scripts start",
+    "start": "npm run server & react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "server": "nodemon server --exec babel-node",
-    "lint": "eslint ."
+    "server": "nodemon server --exec babel-node --watch server -e js,gql",
+    "lint": "eslint --ext .js,.jsx ."
   },
   "dependencies": {
     "classnames": "^2.2.5",
     "express": "^4.16.2",
     "express-graphql": "^0.6.11",
-    "graphql": "^0.13.0",
+    "graphql": "^0.13.1",
+    "graphql-tools": "^2.21.0",
     "json-graphql-server": "^2.1.1",
+    "prop-types": "^15.6.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-scripts": "1.1.0",

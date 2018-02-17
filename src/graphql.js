@@ -11,7 +11,7 @@ export async function queryGraphQL(query, variables) {
         variables
     };
     const queryString = JSON.stringify(queryObject);
-    appInstance.setStats({ query, sent: queryString.length });
+    appInstance().setStats({ query, sent: queryString.length });
 
     // eslint-disable-next-line
     const response = await fetch(url, {
@@ -22,7 +22,10 @@ export async function queryGraphQL(query, variables) {
 
     const result = await response.json();
 
-    appInstance.setStats({ time: Date.now() - timeStart, received: JSON.stringify(result).length });
+    appInstance().setStats({
+        time: Date.now() - timeStart,
+        received: JSON.stringify(result).length
+    });
 
     return result;
 }

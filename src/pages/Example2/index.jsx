@@ -7,21 +7,24 @@ import PickActor from '../../components/PickActor';
 import './styles.css';
 
 class Example2 extends React.Component {
-    state = {
-        selectedActorId: null,
-        pictureUrl: null
-    };
+    constructor() {
+        super();
+        this.state = {
+            selectedActorId: null,
+            pictureUrl: null
+        };
+    }
 
     async selectActor(actorId) {
         this.setState({ selectedActorId: actorId });
         const result = await queryGraphQL(`
             query($id: ID!) {
-                Actor(id: $id) {
+                actor(id: $id) {
                     picture
                 }
             }
         `, { id: actorId });
-        this.setState({ pictureUrl: result.data.Actor.picture });
+        this.setState({ pictureUrl: result.data.actor.picture });
     }
 
     render() {

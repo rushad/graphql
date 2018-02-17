@@ -11,6 +11,7 @@
     background: #eee;
     box-shadow: 2px 2px 2px gray;
     text-align: center;
+    outline: none;
 }
 
 .menu__item--selected {

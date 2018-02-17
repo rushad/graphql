@@ -1,25 +1,29 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import { queryGraphQL } from '../../graphql';
 
 import './styles.css';
 
 class PickActor extends React.Component {
-    state = {
-        actors: [],
-    };
+    constructor() {
+        super();
+        this.state = {
+            actors: []
+        };
+    }
 
     async componentWillMount() {
         const result = await queryGraphQL(`
             query {
-                allActors(sortField: "lastName") {
+                actors(sortField: "lastName") {
                     id
                     firstName
                     lastName
                 }
             }
         `);
-        this.setState({ actors: result.data.allActors });
+        this.setState({ actors: result.data.actors });
     }
 
     render() {
@@ -29,14 +33,14 @@ class PickActor extends React.Component {
                 value={ this.props.selected || 'placeholder' }
                 onChange={ e => this.props.onChange(e.target.value) }
             >
-                    <option
-                        key='placeholder'
-                        value='placeholder'
-                        disabled
-                    >
-                        Pick Actor
-                    </option>
-                    { this.state.actors.map(actor => (
+                <option
+                    key='placeholder'
+                    value='placeholder'
+                    disabled
+                >
+                    Pick Actor
+                </option>
+                { this.state.actors.map(actor => (
                     <option key={ actor.id } value={ actor.id }>
                         { actor.firstName } { actor.lastName }
                     </option>
@@ -45,5 +49,14 @@ class PickActor extends React.Component {
         );
     }
 }
+
+PickActor.propTypes = {
+    selected: PropTypes.string,
+    onChange: PropTypes.func.isRequired
+};
+
+PickActor.defaultProps = {
+    selected: null
+};
 
 export default PickActor;

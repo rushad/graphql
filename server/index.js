@@ -1,23 +1,17 @@
 import fs from 'fs';
 import express from 'express';
 import graphqlHTTP from 'express-graphql';
-import jsonGraphqlExpress from 'json-graphql-server';
+import { makeExecutableSchema } from 'graphql-tools';
 
-import schema from './schema';
-
-import db from './db';
+import resolvers from './resolvers';
 
 const app = express();
 
-const resolvers = {
-    hello: args => `Hello ${args.name}`
-};
-
-app.use('/graphql', jsonGraphqlExpress(db));
-
-app.use('/graphql1', graphqlHTTP({
-    schema,
-    rootValue: resolvers,
+app.use('/graphql', graphqlHTTP({
+    schema: makeExecutableSchema({
+        typeDefs: fs.readFileSync('server/schema.gql').toString(),
+        resolvers
+    }),
     graphiql: true
 }));
 

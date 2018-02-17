@@ -5,9 +5,12 @@ import PickActor from '../../components/PickActor';
 import './styles.css';
 
 class Example1 extends React.Component {
-    state = {
-        selectedActorId: null
-    };
+    constructor() {
+        super();
+        this.state = {
+            selectedActorId: null
+        };
+    }
 
     render() {
         return (

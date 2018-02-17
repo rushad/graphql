@@ -19,12 +19,12 @@ const EXAMPLES = [
     {
         title: 'Example #2',
         page: Example2,
-        source: './src/pages/Example2/index.jsx'      
+        source: './src/pages/Example2/index.jsx'
     },
     {
         title: 'Example #3',
         page: Example3,
-        source: './src/pages/Example3/index.jsx'      
+        source: './src/pages/Example3/index.jsx'
     },
     {
         title: 'Example #4',
@@ -32,22 +32,24 @@ const EXAMPLES = [
     }
 ];
 
-export let appInstance;
+// eslint-disable-next-line
+let _appInstance;
+export function appInstance() {
+    return _appInstance;
+}
 
 class App extends React.Component {
     constructor() {
         super();
-        appInstance = this;
+        _appInstance = this;
+        this.state = {
+            selected: 0,
+            query: null,
+            time: null,
+            sent: null,
+            received: null
+        };
     }
-
-    state = {
-        selected: 0,
-        source: null,
-        query: null,
-        time: null,
-        sent: null,
-        received: null
-    };
 
     setStats(stats) {
         this.setState(stats);
@@ -58,16 +60,10 @@ class App extends React.Component {
             <div className='app'>
                 <div className='app__menu'>
                     <Menu
-                        items={ EXAMPLES }
+                        items={ EXAMPLES.map(example => example.title) }
                         selected={ this.state.selected }
                         onSelect={ selected => this.setState({ selected }) }
-                    >
-                        {
-                            EXAMPLES.map((example, index) => (
-                                <div key={ index }>{ example.title }</div>
-                            ))
-                        }
-                    </Menu>
+                    />
                 </div>
                 <div className='app__example'>
                     <div className='app__example-title'>

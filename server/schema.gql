@@ -1,0 +1,46 @@
+enum Gender {
+    M
+    F
+}
+
+type Actor {
+    id: ID!
+    firstName: String!
+    lastName: String!
+    gender: Gender!
+    picture: String!
+    casts: [Cast]
+}
+
+type Movie {
+    id: ID!
+    name: String!
+    year: Int!
+    casts: [Cast]        
+}
+
+type Cast {
+    role: String!
+    actor: Actor
+    movie: Movie
+}
+
+input ActorFilter {
+    firstName: String
+    lastName: String
+    gender: Gender
+}
+
+input MovieFilter {
+    name: String
+    year: Int
+}
+
+type Query {
+    actor(id: ID!): Actor
+    movie(id: ID!): Movie
+    actors(page: Int, perPage: Int, sortField: String, descending: Boolean, filter: ActorFilter): [Actor]
+    totalActors(filter: ActorFilter): Int
+    movies(page: Int, perPage: Int, sortField: String, descending: Boolean, filter: MovieFilter): [Movie]
+    totalMovies(filter: MovieFilter): Int
+}
