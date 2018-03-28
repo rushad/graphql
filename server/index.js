@@ -6,7 +6,7 @@ import { makeExecutableSchema } from 'graphql-tools';
 
 import resolvers from './resolvers';
 
-const PORT = process.env.NODE_ENV === 'dev' ? 3001 : 3000;
+const PORT = process.env.PORT || 3001;
 
 const app = express();
 
@@ -22,9 +22,7 @@ app.post('/source/', express.json(), (req, res) => {
     res.send(fs.readFileSync(req.body.file));
 });
 
-if (process.env.NODE_ENV !== 'dev') {
-    app.use(express.static(path.join(__dirname, '../build')));
-}
+app.use(express.static(path.join(__dirname, '../build')));
 
 app.listen(PORT);
 
