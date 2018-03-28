@@ -7,9 +7,9 @@
   "main": "index.js",
   "proxy": "http://localhost:3001",
   "scripts": {
-    "postinstall": "npm run build & npm install -g serve",
-    "start": "serve -s build",
-    "dev": "npm run server & react-scripts start",
+    "postinstall": "npm run build",
+    "start": "npm run server",
+    "dev": "NODE_ENV='dev' npm run server & react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
