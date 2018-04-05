@@ -1,0 +1,42 @@
+.example4 {
+    text-align: center;
+    overflow: auto;
+    height: calc(100vh - var(--example-title-height));
+}
+
+.example4__actor {
+    margin: 5px;
+}
+
+.example4__info {
+    display: inline-block;
+    vertical-align: middle;
+    width: 300px;
+}
+
+.example4__picture {
+    width: 100px;
+    vertical-align: middle;    
+}
+
+.example4__button {
+    display: inline-block;
+    cursor: pointer;
+    margin: 10px;
+    user-select: none;
+}
+
+.example4__button--disabled {
+    color: gray;
+    cursor: default;
+}
+
+.example4__count {
+    display: inline-block;
+}
+
+.example4__movie {
+    font-size: 12px;
+    font-style: italic;
+    color: blue;
+}

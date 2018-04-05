@@ -12,7 +12,7 @@ const Button = ({ disabled, onClick, children }) => (
     <div
         role='button'
         tabIndex={ -1 }
-        className={ cn('example3__button', { 'example3__button--disabled': disabled }) }
+        className={ cn('example4__button', { 'example4__button--disabled': disabled }) }
         onClick={ () => !disabled && onClick() }
         onKeyDown={ () => {} }
     >
@@ -26,7 +26,7 @@ Button.propTypes = {
     children: PropTypes.node.isRequired
 };
 
-class Example3 extends React.Component {
+class Example4 extends React.Component {
     constructor() {
         super();
         this.state = {
@@ -55,6 +55,13 @@ class Example3 extends React.Component {
                     lastName
                     gender
                     picture
+                    casts {
+                        role
+                        movie {
+                            name
+                            year
+                        }
+                    }
                 }
                 totalActors
             }          
@@ -68,14 +75,14 @@ class Example3 extends React.Component {
     render() {
         const pagesCount = Math.floor((this.state.count + (PER_PAGE - 1)) / PER_PAGE);
         return (
-            <div className='example3'>
+            <div className='example4'>
                 <Button
                     disabled={ this.state.page < 1 }
                     onClick={ () => this.setState({ page: this.state.page - 1 }) }
                 >
                     ⇦
                 </Button>
-                <div className='example3__count'>[ { this.state.page + 1} / { pagesCount } ]</div>
+                <div className='example4__count'>[ { this.state.page + 1} / { pagesCount } ]</div>
                 <Button
                     disabled={ this.state.page >= pagesCount - 1 }
                     onClick={ () => this.setState({ page: this.state.page + 1 }) }
@@ -84,14 +91,19 @@ class Example3 extends React.Component {
                 </Button>
                 {
                     this.state.actors.map(actor => (
-                        <div key={ actor.id } className='example3__actor'>
+                        <div key={ actor.id } className='example4__actor'>
                             <img
-                                className='example3__picture'
+                                className='example4__picture'
                                 src={ actor.picture }
                                 alt=''
                             />
-                            <div className='example3__name'>
-                                { actor.firstName } { actor.lastName }
+                            <div className='example4__info'>
+                                <div>{ actor.firstName } { actor.lastName }</div>
+                                { actor.casts.map(cast => (
+                                    <div className='example4__movie'>
+                                        { cast.movie.name } ({ cast.movie.year }): { cast.role }
+                                    </div>
+                                ))}
                             </div>
                         </div>
                     ))
@@ -101,4 +113,4 @@ class Example3 extends React.Component {
     }
 }
 
-export default Example3;
+export default Example4;

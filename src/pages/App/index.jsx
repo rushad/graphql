@@ -5,6 +5,7 @@ import SourceView from '../../components/SourceView';
 import Example1 from '../Example1';
 import Example2 from '../Example2';
 import Example3 from '../Example3';
+import Example4 from '../Example4';
 
 import { stripIndent } from '../../utils';
 
@@ -28,7 +29,8 @@ const EXAMPLES = [
     },
     {
         title: 'Example #4',
-        page: Example1
+        page: Example4,
+        source: './src/pages/Example4/index.jsx'
     }
 ];
 

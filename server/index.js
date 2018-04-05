@@ -26,4 +26,4 @@ app.use(express.static(path.join(__dirname, '../build')));
 
 app.listen(PORT);
 
-console.log('Server on port', PORT);
+console.log('🌎 Server on port', PORT);
