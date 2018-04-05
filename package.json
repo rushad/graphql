@@ -8,7 +8,7 @@
   "proxy": "http://localhost:3001",
   "scripts": {
     "postinstall": "npm run build",
-    "start": "npm run server",
+    "start": "babel-node server",
     "dev": "npm run server & react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",

@@ -13,7 +13,11 @@ class PickActor extends React.Component {
         };
     }
 
-    async componentWillMount() {
+    componentDidMount() {
+        this.loadData();
+    }
+
+    async loadData() {
         const result = await queryGraphQL(`
             query {
                 actors(sortField: "lastName") {

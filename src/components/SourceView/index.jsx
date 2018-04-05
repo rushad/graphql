@@ -21,7 +21,7 @@ class SourceView extends React.Component {
         };
     }
 
-    componentWillMount() {
+    componentDidMount() {
         this.loadSource(this.props.file);
     }
 

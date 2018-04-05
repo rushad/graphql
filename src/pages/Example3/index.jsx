@@ -17,7 +17,7 @@ class Example3 extends React.Component {
         };
     }
 
-    componentWillMount() {
+    componentDidMount() {
         this.loadPage();
     }
 
