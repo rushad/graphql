@@ -33,7 +33,7 @@ input ActorFilter {
 
 input MovieFilter {
     name: String
-    year: Int
+    year: String
 }
 
 type Query {

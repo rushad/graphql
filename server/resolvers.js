@@ -5,7 +5,31 @@ function comparator(a, b, descending) {
 }
 
 function filtrator(element, filter) {
-    return !filter || !Object.keys(filter).some(key => !element[key].startsWith(filter[key]));
+    return !filter || !Object.keys(filter).some((key) => {
+        const type = typeof element[key];
+        if (type === 'string') {
+            return !element[key].startsWith(filter[key]);
+        } else if (type === 'number') {
+            const filterValue = filter[key];
+            const match = filterValue.match(/[0-9]+/);
+            const number = Number(filterValue.substr(match.index));
+            const op = filterValue.substr(0, match.index);
+            /* eslint-disable indent */
+            switch (op) {
+                case '>': return !(element[key] > number);
+                case '>=': return !(element[key] >= number);
+                case '<': return !(element[key] < number);
+                case '<=': return !(element[key] <= number);
+                case '=':
+                case '':
+                    return !(element[key] === number);
+                default:
+                    throw new Error(`Unknown op (${op})`);
+            }
+            /* eslint-enable indent */
+        }
+        throw new Error('Unknown data type');
+    });
 }
 
 function find(collection, page = 0, perPage, sortField, descending, filter) {
