@@ -1,7 +1,7 @@
 /* eslint-disable */
 module.exports = {
     actors: [
-        { id: '101', firsttitle: 'James', lasttitle: 'Stewart', gender: 'M', picture: 'https://images-na.ssl-images-amazon.com/images/M/MV5BMjIwNzMzODY0NV5BMl5BanBnXkFtZTcwMDk3NDQyOA@@._V1_SY1000_CR0,0,799,1000_AL_.jpg' },
+        { id: '101', firstName: 'James', lastName: 'Stewart', gender: 'M', picture: 'https://images-na.ssl-images-amazon.com/images/M/MV5BMjIwNzMzODY0NV5BMl5BanBnXkFtZTcwMDk3NDQyOA@@._V1_SY1000_CR0,0,799,1000_AL_.jpg' },
         { id: '102', firstName: 'Deborah', lastName: 'Kerr', gender: 'F', picture: 'https://images-na.ssl-images-amazon.com/images/M/MV5BMjEwNTAzNTA2MV5BMl5BanBnXkFtZTYwMjUzMzQ2._V1_.jpg' },
         { id: '103', firstName: 'Peter', lastName: 'OToole', gender: 'M', picture: 'https://images-na.ssl-images-amazon.com/images/M/MV5BMjA0MDYyNzczN15BMl5BanBnXkFtZTYwNjMzNjMz._V1_.jpg' },
         { id: '104', firstName: 'Robert', lastName: 'De Niro', gender: 'M', picture: 'https://images-na.ssl-images-amazon.com/images/M/MV5BMjAwNDU3MzcyOV5BMl5BanBnXkFtZTcwMjc0MTIxMw@@._V1_.jpg' },
