@@ -58,7 +58,7 @@ class Example4 extends React.Component {
                     casts {
                         role
                         movie {
-                            name
+                            title
                             year
                         }
                     }
@@ -101,7 +101,7 @@ class Example4 extends React.Component {
                                 <div>{ actor.firstName } { actor.lastName }</div>
                                 { actor.casts.map(cast => (
                                     <div className='example4__movie'>
-                                        { cast.movie.name } ({ cast.movie.year }): { cast.role }
+                                        { cast.movie.title } ({ cast.movie.year }): { cast.role }
                                     </div>
                                 ))}
                             </div>

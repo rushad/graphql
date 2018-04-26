@@ -14,7 +14,7 @@ type Actor {
 
 type Movie {
     id: ID!
-    name: String!
+    title: String!
     year: Int!
     casts: [Cast]        
 }
@@ -32,7 +32,7 @@ input ActorFilter {
 }
 
 input MovieFilter {
-    name: String
+    title: String
     year: String
 }
 
